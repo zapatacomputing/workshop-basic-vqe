@@ -1,0 +1,53 @@
+# Workflow API version
+apiVersion: io.orquestra.workflow/1.0.0
+# Prefix for workflow ID
+name: basic-vqe
+
+# List components needed by workflow.
+imports:
+- name: basic-vqe
+  type: git
+  parameters:
+    repository: "git@github.com:jamesclark-Zapata/workshop-basic-vqe.git"
+    branch: "main"
+- name: z-quantum-core
+  type: git
+  parameters:
+    repository: "git@github.com:zapatacomputing/z-quantum-core.git"
+    branch: "master"
+- name: qe-qulacs
+  type: git
+  parameters:
+    repository: "git@github.com:zapatacomputing/qe-qulacs.git"
+    branch: "master"
+
+# List the steps in the workflow
+steps:
+- name: run-circuit
+  config:
+    runtime:
+      language: python3
+      imports: [z-quantum-core, qe-qulacs, basic-vqe] 
+      parameters:
+        file: basic-vqe/steps/vqe.py
+        function: vqe
+  inputs:
+  # The QuantumBackend we want to use
+  - backend_specs: 
+      module_name: qequlacs.simulator
+      function_name: QulacsSimulator
+    type: specs
+  # Coefficients of our Hamiltonian
+  - coefficients: 
+      x: 1
+      z: 2
+      i: 1
+    type: coefficients 
+  outputs:
+  - name: results
+    type: output
+
+types:
+- specs
+- coefficients
+- output
