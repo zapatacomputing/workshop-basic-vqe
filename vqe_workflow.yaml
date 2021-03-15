@@ -29,7 +29,7 @@ steps:
       language: python3
       imports: [z-quantum-core, qe-qulacs, basic-vqe] 
       parameters:
-        file: basic-vqe/steps/vqe.py
+        file: basic-vqe/steps/solution.py
         function: vqe
   inputs:
   # The QuantumBackend we want to use

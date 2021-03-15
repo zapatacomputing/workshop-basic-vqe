@@ -24,7 +24,7 @@ def build_circuits() -> Dict[str, QuantumCircuit]:
 
     # The X circuit needs to be rotated to be in the right basis
     xcircuit = QuantumCircuit(1, 1)
-    # MISSING
+    xcircuit.h(0)
 
     # Same with the Y circuit
     ycircuit = QuantumCircuit(1, 1)
