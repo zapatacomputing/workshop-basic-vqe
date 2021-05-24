@@ -9,7 +9,7 @@ imports:
   type: git
   parameters:
     repository: "git@github.com:zapatacomputing/workshop-basic-vqe.git"
-    branch: "main"
+    branch: "178268228-circuit-migration"
 - name: z-quantum-core
   type: git
   parameters:

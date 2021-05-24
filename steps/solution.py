@@ -4,7 +4,7 @@ import yaml
 import numpy as np
 from qiskit import QuantumCircuit
 from qiskit.circuit import Parameter
-from zquantum.core.circuits import import_from_qiskit
+from zquantum.core.wip.circuits import import_from_qiskit
 from zquantum.core.utils import create_object
 from zquantum.core.interfaces.backend import QuantumBackend
 
