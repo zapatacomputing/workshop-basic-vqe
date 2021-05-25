@@ -4,7 +4,7 @@ import yaml
 import numpy as np
 from qiskit import QuantumCircuit
 from qiskit.circuit import Parameter
-from zquantum.core.circuit import Circuit
+from zquantum.core.wip.circuits import import_from_qiskit
 from zquantum.core.utils import create_object
 from zquantum.core.interfaces.backend import QuantumBackend
 
@@ -152,7 +152,7 @@ def expectation_from_circuit(
     backend: QuantumBackend, circuit: QuantumCircuit, samples: int
 ):
     # Convert the qiskit circuit
-    zap_circuit = Circuit(circuit)
+    zap_circuit = import_from_qiskit(circuit)
 
     # Execute the circuit using an Orquestra backend
     measurement = backend.run_circuit_and_measure(zap_circuit, n_samples=samples)
